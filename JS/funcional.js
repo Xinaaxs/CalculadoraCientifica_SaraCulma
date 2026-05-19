@@ -33,34 +33,58 @@ let m = {
         switch(accion)
         {
             case "numero":
+                p.cantisignos = 0;
+
+
                 //console.log("numero");
-                if(p.operaciones.innerHTML == 0)
+                if(p.operaciones.innerHTML == "0")
                 {
                     p.operaciones.innerHTML = digito;
                 }else{
-                    p.operaciones.innerHTML += digito;
+                    //p.operaciones.innerHTML += digito;
+                    if(p.resultado){
+                        p.resultado = false;
+                        p.operaciones.innerHTML = digito;
+                    }else{
+                        p.operaciones.innerHTML += digito;
+                    }
                 }
             break;
 
             case "simbolo":
+                 p.cantisignos++;
+                 if(p.cantisignos == 1){
+
+                    if(p.operaciones.innerHTML == "0"){
+                        p.operaciones.innerHTML = "0";
+                    }else{
+                        p.operaciones.innerHTML += digito;
+                        p.cantdecimal = false;
+                    }
+                 }
                 //console.log("simbolo");
-                p.operaciones.innerHTML += digito;
+               
             break;
 
             case"decimal":
+            if(!p.cantdecimal){
+                p.operaciones.innerHTML += digito;
+                p.cantdecimal = true;
+            }
             //console.log("decimal");
-            p.operaciones.innerHTML += digito;
             break;
 
             case"igual":
             //console.log("igual");
             p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
+            p.resultado = true;
             break;
         }
 
     },
     borrarCalculadora: function(){
-        p.operaciones.innerHTML = 0;
+        p.operaciones.innerHTML = "0";
     }
 }
+
 m.inicio();
