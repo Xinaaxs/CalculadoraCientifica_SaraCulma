@@ -115,14 +115,19 @@ let m = {
             //console.log("decimal");
             break;
 
-            case"igual":
-            //console.log("igual");
-            p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
-            p.resultado = true;
-            break;
-        }
+            case "igual":
 
-    },
+    if (p.operaciones.innerHTML.includes("/0")) {
+        p.operaciones.innerHTML = "No se puede dividir";
+    } else {
+        p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
+        p.resultado = true;
+    }
+
+break;
+
+    }
+},
     borrarCalculadora: function(){
         p.operaciones.innerHTML = "0";
     }
