@@ -34,7 +34,7 @@ let m = {
 
              else if(tecla == "."){
 
-            m.calculadora("numero", tecla);
+            m.calculadora("decimal", tecla);
 
         }
 
@@ -93,26 +93,24 @@ let m = {
         switch(accion)
         {
             case "numero":
-                p.cantisignos = 0;
+
+    p.cantisignos = 0;
+
+    if(p.resultado){
+        p.operaciones.innerHTML = digito;
+        p.resultado = false;
+    }
+    else if(p.operaciones.innerHTML == "0"){
+        p.operaciones.innerHTML = digito;
+    }
+    else{
+        p.operaciones.innerHTML += digito;
+    }
+
+break;
 
 
-                //console.log("numero");
-                if(p.operaciones.innerHTML == "0")
-                {
-                    p.operaciones.innerHTML = digito;;
-                }else{
-                    //p.operaciones.innerHTML += digito;
-                    if(p.resultado){
-                        p.resultado = false;
-                        p.operaciones.innerHTML = digito;
-                    }else{
-                        p.operaciones.innerHTML += digito;
-                    }
-                }
-            break;
 
-
-            
     case "simbolo":
 
     if(digito == "√"){
