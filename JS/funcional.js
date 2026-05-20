@@ -50,6 +50,10 @@ let m = {
             m.calculadora("simbolo", "cos")
         }
 
+         else if(tecla == "p"){
+            m.calculadora("simbolo", "^")
+        }
+
 
 
         else if(tecla == "Enter"){
@@ -107,44 +111,66 @@ let m = {
                 }
             break;
 
+
+            
     case "simbolo":
 
-            if(digito == "√"){
+    if(digito == "√"){
 
-                p.operaciones.innerHTML = Math.sqrt(p.operaciones.innerHTML);
-                p.resultado = true;
-                p.cantdecimal = false;
-                p.cantisignos = 0;
-            return;
-         }
+        p.operaciones.innerHTML =
+        Math.sqrt(Number(p.operaciones.innerHTML));
 
-            if(digito == "sin"){
+        p.resultado = true;
+        p.cantdecimal = false;
+        p.cantisignos = 0;
 
-                 p.operaciones.innerHTML =
-                 Math.sin(Number(p.operaciones.innerHTML) * Math.PI / 180);
-                p.resultado = true;
-                p.cantdecimal = false;
-                p.cantisignos = 0;
-            return;
-    }
-            if(digito == "cos"){
-
-                p.operaciones.innerHTML =
-                Math.cos(Number(p.operaciones.innerHTML) * Math.PI / 180);
-                p.resultado = true;
-                p.cantdecimal = false;
-                p.cantisignos = 0;
         return;
     }
-                p.cantisignos++;
 
-            if(p.cantisignos == 1){
+    if(digito == "sin"){
 
-            if(p.operaciones.innerHTML != "0"){
+        p.operaciones.innerHTML =
+        Math.sin(Number(p.operaciones.innerHTML) * Math.PI / 180);
 
-                p.operaciones.innerHTML += digito;
-                p.cantdecimal = false;
-            }
+        p.resultado = true;
+        p.cantdecimal = false;
+        p.cantisignos = 0;
+
+        return;
+    }
+
+    if(digito == "cos"){
+
+        p.operaciones.innerHTML =
+        Math.cos(Number(p.operaciones.innerHTML) * Math.PI / 180);
+
+        p.resultado = true;
+        p.cantdecimal = false;
+        p.cantisignos = 0;
+
+        return;
+    }
+
+    if(digito == "^"){
+
+        p.operaciones.innerHTML =
+        Number(p.operaciones.innerHTML) ** 2;
+
+        p.resultado = true;
+        p.cantdecimal = false;
+        p.cantisignos = 0;
+
+        return;
+    }
+    p.cantisignos++;
+
+    if(p.cantisignos == 1){
+
+        if(p.operaciones.innerHTML != "0"){
+
+            p.operaciones.innerHTML += digito;
+            p.cantdecimal = false;
+        }
     }
 
 break;
