@@ -37,6 +37,11 @@ let m = {
             m.calculadora("numero", tecla);
 
         }
+
+        else if(tecla == "r"){
+            m.calculadora("simbolo", "√")
+        }
+
         else if(tecla == "Enter"){
 
             m.calculadora("igual", "=");
@@ -99,10 +104,20 @@ let m = {
                     if(p.operaciones.innerHTML == "0"){
                         p.operaciones.innerHTML = "0";
                     }else{
+
+                    if(digito == "√"){
+                    p.operaciones.innerHTML = Math.sqrt(p.operaciones.innerHTML);
+                    p.resultado = true;
+                    p.cantdecimal = false;
+                    p.cantisignos = 0;
+
+                return;
+
+                    }
                         p.operaciones.innerHTML += digito;
                         p.cantdecimal = false;
-                    }
                  }
+                }
                 //console.log("simbolo");
                
             break;
