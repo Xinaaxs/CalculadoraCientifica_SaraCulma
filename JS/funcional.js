@@ -42,6 +42,16 @@ let m = {
             m.calculadora("simbolo", "√")
         }
 
+        else if(tecla == "s"){
+            m.calculadora("simbolo", "sin")
+        }
+
+        else if(tecla == "c"){
+            m.calculadora("simbolo", "cos")
+        }
+
+
+
         else if(tecla == "Enter"){
 
             m.calculadora("igual", "=");
@@ -97,30 +107,47 @@ let m = {
                 }
             break;
 
-            case "simbolo":
-                 p.cantisignos++;
-                 if(p.cantisignos == 1){
+    case "simbolo":
 
-                    if(p.operaciones.innerHTML == "0"){
-                        p.operaciones.innerHTML = "0";
-                    }else{
+            if(digito == "√"){
 
-                    if(digito == "√"){
-                    p.operaciones.innerHTML = Math.sqrt(p.operaciones.innerHTML);
-                    p.resultado = true;
-                    p.cantdecimal = false;
-                    p.cantisignos = 0;
+                p.operaciones.innerHTML = Math.sqrt(p.operaciones.innerHTML);
+                p.resultado = true;
+                p.cantdecimal = false;
+                p.cantisignos = 0;
+            return;
+         }
 
-                return;
+            if(digito == "sin"){
 
-                    }
-                        p.operaciones.innerHTML += digito;
-                        p.cantdecimal = false;
-                 }
-                }
-                //console.log("simbolo");
-               
-            break;
+                 p.operaciones.innerHTML =
+                 Math.sin(Number(p.operaciones.innerHTML) * Math.PI / 180);
+                p.resultado = true;
+                p.cantdecimal = false;
+                p.cantisignos = 0;
+            return;
+    }
+            if(digito == "cos"){
+
+                p.operaciones.innerHTML =
+                Math.cos(Number(p.operaciones.innerHTML) * Math.PI / 180);
+                p.resultado = true;
+                p.cantdecimal = false;
+                p.cantisignos = 0;
+        return;
+    }
+                p.cantisignos++;
+
+            if(p.cantisignos == 1){
+
+            if(p.operaciones.innerHTML != "0"){
+
+                p.operaciones.innerHTML += digito;
+                p.cantdecimal = false;
+            }
+    }
+
+break;
 
             case"decimal":
             if(!p.cantdecimal){
